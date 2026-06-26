@@ -1,0 +1,227 @@
+@import "tailwindcss";
+@import "../../src/styles/animations.css";
+
+/* ============================================================
+ * Design System — Tailwind v4 @theme inline tokens
+ * ============================================================ */
+
+@theme inline {
+  /* --- Colors --- */
+  --color-background: #F1F6F4;
+  --color-secondary: #D9E8E2;
+  --color-accent: #FFC801;
+  --color-accent-secondary: #FF9932;
+  --color-dark-blue: #114C5A;
+  --color-darkest: #172B36;
+  --color-glass: rgba(255, 255, 255, 0.65);
+  --color-glass-border: rgba(255, 255, 255, 0.35);
+
+  /* --- Fonts --- */
+  --font-heading: 'JetBrains Mono', monospace;
+  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+
+  /* --- Animations --- */
+  --animate-fade-in-up: fadeInUp 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
+  --animate-fade-in: fadeIn 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
+  --animate-scale-in: scaleIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+  --animate-gradient-shift: gradientShift 8s ease-in-out infinite;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-float-reverse: floatReverse 7s ease-in-out infinite;
+  --animate-glow-pulse: glowPulse 4s ease-in-out infinite;
+  --animate-shimmer: shimmer 3s ease-in-out infinite;
+  --animate-scroll-logos: scrollLogos 30s linear infinite;
+  --animate-dash-flow: dashFlow 1.5s linear infinite;
+  --animate-subtle-bounce: subtleBounce 2s ease-in-out infinite;
+}
+
+/* ============================================================
+ * Base Styles
+ * ============================================================ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-darkest);
+  font-family: var(--font-body), system-ui, -apple-system, sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* ============================================================
+ * Typography
+ * ============================================================ */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading), monospace;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--color-darkest);
+}
+
+/* ============================================================
+ * Focus Styles — Accessibility
+ * ============================================================ */
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* ============================================================
+ * Skip to Content — Accessibility
+ * ============================================================ */
+
+.skip-to-content {
+  position: absolute;
+  top: -100%;
+  left: 16px;
+  z-index: 9999;
+  padding: 12px 24px;
+  background: var(--color-darkest);
+  color: var(--color-background);
+  font-weight: 600;
+  border-radius: 0 0 8px 8px;
+  text-decoration: none;
+  transition: top 0.2s ease-out;
+}
+
+.skip-to-content:focus {
+  top: 0;
+}
+
+/* ============================================================
+ * Glass Morphism Utilities
+ * ============================================================ */
+
+.glass {
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+}
+
+.glass-subtle {
+  background: rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow:
+    0 4px 24px rgba(23, 43, 54, 0.06),
+    0 1px 3px rgba(23, 43, 54, 0.04);
+}
+
+/* ============================================================
+ * Premium Shadows
+ * ============================================================ */
+
+.shadow-premium {
+  box-shadow:
+    0 4px 24px rgba(23, 43, 54, 0.08),
+    0 1px 4px rgba(23, 43, 54, 0.04);
+}
+
+.shadow-premium-lg {
+  box-shadow:
+    0 8px 40px rgba(23, 43, 54, 0.1),
+    0 2px 8px rgba(23, 43, 54, 0.06);
+}
+
+.shadow-glow-accent {
+  box-shadow:
+    0 0 20px rgba(255, 200, 1, 0.15),
+    0 0 40px rgba(255, 200, 1, 0.05);
+}
+
+/* ============================================================
+ * Gradient Utilities
+ * ============================================================ */
+
+.gradient-text {
+  background: linear-gradient(135deg, var(--color-darkest) 0%, var(--color-accent-secondary) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gradient-accent {
+  background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-secondary) 100%);
+}
+
+.gradient-dark {
+  background: linear-gradient(135deg, var(--color-darkest) 0%, var(--color-dark-blue) 100%);
+}
+
+/* ============================================================
+ * Scrollbar
+ * ============================================================ */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-dark-blue);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-darkest);
+}
+
+/* ============================================================
+ * Reduced Motion — Accessibility
+ * ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ============================================================
+ * Selection Styling
+ * ============================================================ */
+
+::selection {
+  background: rgba(255, 200, 1, 0.3);
+  color: var(--color-darkest);
+}
